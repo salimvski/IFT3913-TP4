@@ -27,7 +27,7 @@ public class CurrencyConvertorTest extends TestCase {
     }
 
     public void testValidCurrency() throws ParseException {
-        // Jeu de test pour les montants :
+        // Jeu de test pour plusieurs monnaies :
         ArrayList<String> currencys = new ArrayList(Arrays.asList("USD", "CHF", "INR", "AUD","MAD", "CUP", "JPY"));
 
         ArrayList<String> validCurrencys = new ArrayList(Arrays.asList("USD", "CAD", "GBP", "EUR", "CHF", "INR", "AUD"));
@@ -60,9 +60,9 @@ public class CurrencyConvertorTest extends TestCase {
         double res = CurrencyConvertor.convert(500, "USD","CAD", this.conversion);
         assertEquals(res, 672.1753188431832);
         //invalide
-        String invalidCurrency = "JPY";
+        String invalidCurrency = "ZENI";
         try {
-            System.out.println("Conversion from USD to JPY...");
+            System.out.println("Conversion from USD to inexisting currency...");
             CurrencyConvertor.convert(500, "USD",invalidCurrency, this.conversion);
         }
         catch (Exception e) {
