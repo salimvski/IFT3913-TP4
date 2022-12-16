@@ -49,7 +49,7 @@ Try again" qui est une valeur qui est bien cense retourner une erreur. Le progra
 
 2. TESTS BOITE BLANC (40%)
 
-- Creer test java pour la specification
+- Les tests de la methode `convert()` ont ete effectues et sont visibles depuis dans la classe CurrencyConvertorTest.java
 
 
 
@@ -58,3 +58,51 @@ Try again" qui est une valeur qui est bien cense retourner une erreur. Le progra
 3. RAPPORT (30%)
 
 - Pour les resultats des tests boite noire, nous avons suivi la methode de l'apporche de partition du domaine des entrees en classes d'equivalence et d'analyse des valeurs frontieres. Nous avons choisi dans nos jeus de test des valeurs dans l'interval de specifiation et en dehors. Nous avons aussi fait un jeu pour l'analyse des valeurs frontieres. Pour les valeurs discretes, nous avons choisi une devise hors de la specification puis une dans la specification. Lors de la phase test, comme prevu les valeurs negatives retournent des erreurs, tandis que les valeurs positives qu'elles soient dans l'interval de specification ou non sont acceptees. En effet, ceci s'explique par le fait que les contraintes pour la specification du "Currency Convertor" n'ont pas ete implementees ce qui fait echouer nos tests.
+
+
+- CurrencyConvertorTest.java :
+    - testCurrency(): Cette  methode de test a pour but de faire des tests sur la specification suivante :
+    • Convertir des montants uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Nous avons dans un premier temps un test pour s'assurer que une conversion entre deux devises valides est bien possible,
+    la conversion de 500 USD vers CAD nous renvoie le bon resultat sans poser de soucis. Dans un second temps, le test entre
+    une devise valide et une autre qui n'existe pas, comme attendu, nous avons une erreur et un message qu s'en suit,
+    voici ce qui s'affiche en console :
+    ```
+    Conversion from USD to inexisting currency...
+    ZENI is Not correct format currency
+    ```
+    Nous nous nous sommes dit que cela serait de bons cas a voir pour les devises donnees.
+
+    - testAmount(): Cette  methode de test a pour but de faire des tests sur la specification suivante :
+    • Seulement accepter des montants entre [0, 10000].
+    On fait la conversion entre du USD au CAD, mais en donnant en parametre un parametre different en faisant une
+    iteration sur une liste qui contient des montants predefinis, dont plusieurs qui ne respectent pas la specification.
+    Nous avons defini la specification a l'aide d'assessertions, qui permettent de defninir des bornes aux montants
+    donnes en parametre. On lance le test et on observe ce resultat :
+    ```
+    Amount : -9000, Seulement accepter des montants entre [0, 10000]
+    Amount : -1, Seulement accepter des montants entre [0, 10000]
+    Amount : 10001, Seulement accepter des montants entre [0, 10000]
+    Amount : 20000, Seulement accepter des montants entre [0, 10000]
+    ```
+    Nous avons bien les resultats voulus, peu importe le montant donne, la conversion ne se fera  pas si elle ne
+    respecte pas la specification.
+
+    - testCurrency(): Test en long et en large des devises.
+    On a une liste qui contient plusieurs devises, certaines sont valides, d'autres non, on tente de faire une conversion
+    entre ces devises de facon aleatoire un cerain nombre de fois, les devises qui ne respectent pas la specification
+    sur les devises ne sont pas effectues, voici une sortie possible de ce test :
+    ```
+    Monnaies : CHF et MAD -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Monnaies : JPY et JPY -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Monnaies : USD et JPY -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Monnaies : JPY et MAD -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Monnaies : AUD et CUP -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Monnaies : JPY et USD -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Monnaies : INR et MAD -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    Monnaies : MAD et AUD -- Uniquement entre les devises suivantes : USD, CAD, GBP, EUR, CHF, INR, AUD
+    ```
+    C'est ce qu'on veut, les devises qui ne respectent pas la specification ne sont pas convertis, car elles sont bloques
+    par l'assessrtion.
+
+
