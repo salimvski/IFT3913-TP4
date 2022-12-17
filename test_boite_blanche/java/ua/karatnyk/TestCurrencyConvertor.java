@@ -38,6 +38,8 @@ public class CurrencyConvertorTest extends TestCase {
             String e2 = currencys.get(rand.nextInt(currencys.size()));
 
             try {
+                assertEquals(e1.length(), 3);
+                assertEquals(e2.length(), 3);
                 assert validCurrencys.contains(e1): "Uniquement entre les devises suivantes : USD, CAD, GBP, " +
                         "EUR, CHF, INR, AUD";
 
@@ -77,6 +79,7 @@ public class CurrencyConvertorTest extends TestCase {
 
         for (Integer amount: amounts) {
             try {
+                assertEquals(amount.getClass(), Integer.class);
                 assert amount <= 10000 : "Seulement accepter des montants entre [0, 10000]";
                 assert amount >= 0 : "Seulement accepter des montants entre [0, 10000]";
                 CurrencyConvertor.convert(amount, "USD","CAD", this.conversion);
