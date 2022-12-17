@@ -57,7 +57,16 @@ Try again" qui est une valeur qui est bien cense retourner une erreur. Le progra
 
 3. RAPPORT (30%)
 
-- Pour les resultats des tests boite noire, nous avons suivi la methode de l'apporche de partition du domaine des entrees en classes d'equivalence et d'analyse des valeurs frontieres. Nous avons choisi dans nos jeus de test des valeurs dans l'interval de specifiation et en dehors. Nous avons aussi fait un jeu pour l'analyse des valeurs frontieres. Pour les valeurs discretes, nous avons choisi une devise hors de la specification puis une dans la specification. Lors de la phase test, comme prevu les valeurs negatives retournent des erreurs, tandis que les valeurs positives qu'elles soient dans l'interval de specification ou non sont acceptees. En effet, ceci s'explique par le fait que les contraintes pour la specification du "Currency Convertor" n'ont pas ete implementees ce qui fait echouer nos tests.
+- Pour les resultats des tests boite noire, nous avons suivi la methode de 
+l'apporche de partition du domaine des entrees en classes d'equivalence et d'analyse 
+des valeurs frontieres. Nous avons choisi dans nos jeus de test des valeurs dans 
+l'interval de specifiation et en dehors. Nous avons aussi fait un jeu pour l'analyse 
+des valeurs frontieres. Pour les valeurs discretes, nous avons choisi une devise hors 
+de la specification puis une dans la specification. Lors de la phase test, comme prevu 
+les valeurs negatives retournent des erreurs, tandis que les valeurs positives qu'elles 
+soient dans l'interval de specification ou non sont acceptees. En effet, ceci s'explique 
+par le fait que les contraintes pour la specification du "Currency Convertor" n'ont pas 
+ete implementees ce qui fait echouer nos tests.
 
 
 - CurrencyConvertorTest.java :
